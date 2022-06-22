@@ -5,7 +5,7 @@ import java.io.File;
 
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import dev.joshua_coombs.pages.ERSPage;
 import io.cucumber.java.BeforeAll;
@@ -18,4 +18,17 @@ import io.cucumber.junit.CucumberOptions;
 public class ERSRunner {
 	public static WebDriver realHumanBeing;
 	public static ERSPage ersPage;
+	
+	@BeforeAll
+	public static void setup() {
+		File firefox = new File("src/test/resources/geckodriver.exe");
+		System.setProperty("webdriver.firefox.driver", firefox.getAbsolutePath());
+		realHumanBeing = new FirefoxDriver();
+		ersPage = new ERSPage(realHumanBeing);
+	}
+	
+	@AfterAll
+	public static void teardown() {
+		realHumanBeing.quit();
+	}
 }

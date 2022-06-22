@@ -7,4 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ERSPage {
 	private WebDriver realHumanBeing;
+	public ERSPage(WebDriver realHumanBeing) {
+		this.realHumanBeing = realHumanBeing;
+		PageFactory.initElements(realHumanBeing, this);
+	}
 }

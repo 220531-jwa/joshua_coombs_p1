@@ -3,4 +3,5 @@
     <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
     <fullyQualifiedTypeName name="dev.joshua_coombs.runner.ERSRunner"/>
     <fullyQualifiedTypeName name="dev.joshua_coombs.pages.ERSPage"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.firefox.FirefoxDriver"/>
 </qualifiedTypeNameHistroy>
