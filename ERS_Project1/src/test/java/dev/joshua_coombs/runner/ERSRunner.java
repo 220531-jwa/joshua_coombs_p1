@@ -14,7 +14,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = {"src/test/resources"}, glue = {"com.revature.steps"})
+@CucumberOptions(features = {"src/test/resources"}, glue = {"dev.joshua_coombs.steps"})
 public class ERSRunner {
 	public static WebDriver realHumanBeing;
 	public static ERSPage ersPage;

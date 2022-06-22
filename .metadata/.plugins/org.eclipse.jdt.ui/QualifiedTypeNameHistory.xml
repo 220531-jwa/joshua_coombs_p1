@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+    <fullyQualifiedTypeName name="dev.joshua_coombs.runner.ERSRunner"/>
+    <fullyQualifiedTypeName name="dev.joshua_coombs.pages.ERSPage"/>
 </qualifiedTypeNameHistroy>
