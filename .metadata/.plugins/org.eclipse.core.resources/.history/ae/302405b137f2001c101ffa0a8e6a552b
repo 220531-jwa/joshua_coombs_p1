@@ -1,0 +1,16 @@
+package dev.joshua_coombs.models;
+
+import java.time.LocalDateTime;
+
+public class ReimbursementForm {
+	private int employeeId;
+	private String employeeFirstName;
+	private String employeeLastName;
+	private LocalDateTime dateAndTime;
+	private String location;
+	private String description;
+	private double cost;
+	private GradingFormat gradingFormat;
+	private EventType eventType;
+	private String justification;
+}

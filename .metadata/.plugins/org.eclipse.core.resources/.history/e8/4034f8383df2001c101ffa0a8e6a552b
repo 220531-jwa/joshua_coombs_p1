@@ -1,0 +1,7 @@
+package dev.joshua_coombs.models;
+
+public enum GradingFormat {
+	LETTER,
+	NUMBER,
+	QUALITY
+}
