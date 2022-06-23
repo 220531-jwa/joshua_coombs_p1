@@ -9,9 +9,9 @@ public class ReimbursementForm {
 	private LocalDateTime dateAndTime;
 	private String location;
 	private String description;
-	private double cost;
-	private GradingFormat gradingFormat;
-	private EventType eventType;
+	private int cost;
+	private String gradingFormat;
+	private String eventType;
 	private String justification;
 	
 	public ReimbursementForm() {
@@ -19,8 +19,9 @@ public class ReimbursementForm {
 	}
 	
 	public ReimbursementForm(int employeeId, String employeeFirstName, String employeeLastName,
-			LocalDateTime dateAndTime, String location, String description, double cost, 
-			GradingFormat gradingFormat, EventType eventType, String justification) {
+			LocalDateTime dateAndTime, String location, String description, int cost, 
+			String gradingFormat, String eventType, String justification) {
+		super();
 		this.employeeId = employeeId;
 		this.employeeFirstName = employeeFirstName;
 		this.employeeLastName = employeeLastName;
@@ -61,11 +62,11 @@ public class ReimbursementForm {
 		return cost;
 	}
 
-	public GradingFormat getGradingFormat() {
+	public String getGradingFormat() {
 		return gradingFormat;
 	}
 
-	public EventType getEventType() {
+	public String getEventType() {
 		return eventType;
 	}
 

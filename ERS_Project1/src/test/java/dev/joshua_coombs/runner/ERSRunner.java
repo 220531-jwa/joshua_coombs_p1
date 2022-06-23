@@ -22,7 +22,7 @@ public class ERSRunner {
 	@BeforeAll
 	public static void setup() {
 		File firefox = new File("src/test/resources/geckodriver.exe");
-		System.setProperty("webdriver.firefox.driver", firefox.getAbsolutePath());
+		System.setProperty("webdriver.gecko.driver", firefox.getAbsolutePath());
 		realHumanBeing = new FirefoxDriver();
 		ersPage = new ERSPage(realHumanBeing);
 	}
