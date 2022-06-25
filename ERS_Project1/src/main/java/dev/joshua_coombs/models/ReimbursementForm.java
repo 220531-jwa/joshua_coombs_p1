@@ -14,6 +14,7 @@ public class ReimbursementForm {
 	private String gradingFormat;
 	private String eventType;
 	private String justification;
+	private int reimbursementAmount;
 	private String reimbursementStatus;
 	
 	public ReimbursementForm() {
@@ -22,7 +23,8 @@ public class ReimbursementForm {
 	
 	public ReimbursementForm(int employeeId, int reimbursementId, String employeeFirstName, String employeeLastName,
 			Timestamp dateAndTime, String location, String description, int cost, String gradingFormat,
-			String eventType, String justification, String reimbursementStatus) {
+			String eventType, String justification, int reimbursementAmount, 
+			String reimbursementStatus) {
 		super();
 		this.employeeId = employeeId;
 		this.reimbursementId = reimbursementId;
@@ -35,6 +37,7 @@ public class ReimbursementForm {
 		this.gradingFormat = gradingFormat;
 		this.eventType = eventType;
 		this.justification = justification;
+		this.reimbursementAmount = reimbursementAmount;
 		this.reimbursementStatus = reimbursementStatus;
 	}
 
@@ -81,13 +84,21 @@ public class ReimbursementForm {
 	public String getJustification() {
 		return justification;
 	}
+	
+	public int getReimbursementAmount() {
+		return reimbursementAmount;
+	}
+	
+	public void setReimbursementAmount(int newAmount) {
+		this.reimbursementAmount = newAmount;
+	}
 
 	public String getReimbursementStatus() {
 		return reimbursementStatus;
 	}
 	
-	public void setReimbursementStatus(String reimbursementStatus) {
-		this.reimbursementStatus = reimbursementStatus;
+	public void setReimbursementStatus(String newStatus) {
+		this.reimbursementStatus = newStatus;
 	}
 
 	@Override
@@ -96,6 +107,6 @@ public class ReimbursementForm {
 				+ ", employeeFirstName=" + employeeFirstName + ", employeeLastName=" + employeeLastName
 				+ ", dateAndTime=" + dateAndTime + ", location=" + location + ", description=" + description + ", cost="
 				+ cost + ", gradingFormat=" + gradingFormat + ", eventType=" + eventType + ", justification="
-				+ justification + ", reimbursementStatus=" + reimbursementStatus + "]";
+				+ justification + ", reimbursementAmount=" + reimbursementAmount + ", reimbursementStatus=" + reimbursementStatus + "]";
 	}
 }

@@ -15,7 +15,7 @@ public class ReimbursementFormDAO {
 	
 	public ReimbursementForm createRF(ReimbursementForm rf) {
 		String sql = "insert into ers.r_form values "
-				+ "(default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning *;";
+				+ "(default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning *;";
 		try (Connection conn = cu.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, rf.getReimbursementId());
@@ -28,7 +28,8 @@ public class ReimbursementFormDAO {
 			ps.setString(8, rf.getGradingFormat());
 			ps.setString(9, rf.getEventType());
 			ps.setString(10, rf.getJustification());
-			ps.setString(11, rf.getReimbursementStatus());
+			ps.setInt(11, rf.getReimbursementAmount());
+			ps.setString(12, rf.getReimbursementStatus());
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				return new ReimbursementForm(
@@ -43,6 +44,7 @@ public class ReimbursementFormDAO {
 						rs.getString("g_format"),
 						rs.getString("e_type"),
 						rs.getString("just"),
+						rs.getInt("r_amount"), 
 						rs.getString("r_status")
 						);
 			}
@@ -50,5 +52,54 @@ public class ReimbursementFormDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public List<ReimbursementForm> getAllReimbursementRequests() {
+		List<ReimbursementForm> rForms = new ArrayList<>();
+		String sql = "select * from ers.r_form";
+		try (Connection conn = cu.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				rForms.add(new ReimbursementForm(
+						rs.getInt("e_id"),
+						rs.getInt("r_id"),
+						rs.getString("first_name"),
+						rs.getString("last_name"),
+						rs.getTimestamp("date_time"),
+						rs.getString("loc"),
+						rs.getString("description"),
+						rs.getInt("r_cost"),
+						rs.getString("g_format"),
+						rs.getString("e_type"),
+						rs.getString("just"),
+						rs.getInt("r_amount"), 
+						rs.getString("r_status")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rForms;
+	}
+	
+	public void getSpecificReimbursementRequest() {
+		//implement here
+	}
+	
+	public void getAllRequestsFromSpecificEmployee() {
+		//implement here
+	}
+	
+	public void cancelReimbursementRequest() {
+		//implement here
+	}
+	
+	public void updateReimbursementStatus() {
+		//implement here
+	}
+	
+	public void updateReimbursementAmount() {
+		//implement here
 	}
 }
