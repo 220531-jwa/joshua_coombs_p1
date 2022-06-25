@@ -83,23 +83,154 @@ public class ReimbursementFormDAO {
 		return rForms;
 	}
 	
-	public void getSpecificReimbursementRequest() {
-		//implement here
+	public ReimbursementForm getSpecificReimbursementRequest(int rId) {
+		String sql = "select * from ers.r_form where r_id = ?;";
+		try (Connection conn = cu.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, rId);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				return new ReimbursementForm(
+						rs.getInt("e_id"),
+						rs.getInt("r_id"),
+						rs.getString("first_name"),
+						rs.getString("last_name"),
+						rs.getTimestamp("date_time"),
+						rs.getString("loc"),
+						rs.getString("description"),
+						rs.getInt("r_cost"),
+						rs.getString("g_format"),
+						rs.getString("e_type"),
+						rs.getString("just"),
+						rs.getInt("r_amount"), 
+						rs.getString("r_status")
+						);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
-	public void getAllRequestsFromSpecificEmployee() {
-		//implement here
+	public List<ReimbursementForm> getAllRequestsFromSpecificEmployee(int eId) {
+		List<ReimbursementForm> rForms = new ArrayList<>();
+		String sql = "select * from ers.r_form where e_id = ?;";
+		try (Connection conn = cu.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, eId);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				rForms.add(new ReimbursementForm(
+						rs.getInt("e_id"),
+						rs.getInt("r_id"),
+						rs.getString("first_name"),
+						rs.getString("last_name"),
+						rs.getTimestamp("date_time"),
+						rs.getString("loc"),
+						rs.getString("description"),
+						rs.getInt("r_cost"),
+						rs.getString("g_format"),
+						rs.getString("e_type"),
+						rs.getString("just"),
+						rs.getInt("r_amount"), 
+						rs.getString("r_status")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
-	public void cancelReimbursementRequest() {
-		//implement here
+	public ReimbursementForm cancelReimbursementRequest(int rId) {
+		String sql = "update ers.r_form set r_status = 'cancelled' where r_id = ? "
+				+ "returning *";
+		try (Connection conn = cu.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, rId);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				return new ReimbursementForm(
+						rs.getInt("e_id"),
+						rs.getInt("r_id"),
+						rs.getString("first_name"),
+						rs.getString("last_name"),
+						rs.getTimestamp("date_time"),
+						rs.getString("loc"),
+						rs.getString("description"),
+						rs.getInt("r_cost"),
+						rs.getString("g_format"),
+						rs.getString("e_type"),
+						rs.getString("just"),
+						rs.getInt("r_amount"), 
+						rs.getString("r_status")
+						);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
-	public void updateReimbursementStatus() {
-		//implement here
+	public ReimbursementForm updateReimbursementStatus(String updateStatus, int rId) {
+		String sql = "update ers.r_form set r_status = ? where r_id = ? "
+				+ "returning *";
+		try (Connection conn = cu.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, updateStatus);
+			ps.setInt(2, rId);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				return new ReimbursementForm(
+						rs.getInt("e_id"),
+						rs.getInt("r_id"),
+						rs.getString("first_name"),
+						rs.getString("last_name"),
+						rs.getTimestamp("date_time"),
+						rs.getString("loc"),
+						rs.getString("description"),
+						rs.getInt("r_cost"),
+						rs.getString("g_format"),
+						rs.getString("e_type"),
+						rs.getString("just"),
+						rs.getInt("r_amount"), 
+						rs.getString("r_status")
+						);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
-	public void updateReimbursementAmount() {
-		//implement here
+	public ReimbursementForm updateReimbursementAmount(int updateAmount, int rId) {
+		String sql = "update ers.r_form set r_amount = ? where r_id = ? "
+				+ "returning *";
+		try (Connection conn = cu.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, updateAmount);
+			ps.setInt(2, rId);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				return new ReimbursementForm(
+						rs.getInt("e_id"),
+						rs.getInt("r_id"),
+						rs.getString("first_name"),
+						rs.getString("last_name"),
+						rs.getTimestamp("date_time"),
+						rs.getString("loc"),
+						rs.getString("description"),
+						rs.getInt("r_cost"),
+						rs.getString("g_format"),
+						rs.getString("e_type"),
+						rs.getString("just"),
+						rs.getInt("r_amount"), 
+						rs.getString("r_status")
+						);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

@@ -12,6 +12,7 @@ import dev.joshua_coombs.utils.ConnectionUtil;
 
 public class AccountDAO {
 	private static ConnectionUtil cu = ConnectionUtil.getConnectionUtil();
+	private static ReimbursementFormDAO rfDao;
 	
 	public Account createAccount(Account a) {
 		String sql = "insert into ers.accounts values (default, ?, ?, ?, ?, ?, ?) returning *;";
@@ -41,7 +42,7 @@ public class AccountDAO {
 		return null;
 	}
 	
-	public Account getSpecificAccountById(int id) {
+	public static Account getSpecificAccountById(int id) {
 		String sql = "select * from ers.accounts where id = ?;";
 		try (Connection conn = cu.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -64,7 +65,18 @@ public class AccountDAO {
 		return null;
 	}
 	
-	public Account updateReimbursementAvailable(int id, int newAmount) {
+	public Account updateReimbursementAvailable(int id) {
+		List<ReimbursementForm> rForms = rfDao.getAllRequestsFromSpecificEmployee(id);
+		int sum = 0;
+		for (int i = 0; i < rForms.size(); i++) {
+			sum += rForms.get(i).getReimbursementAmount();
+		}
+		int newAmount;
+		if (sum > AccountDAO.getSpecificAccountById(id).getReimbursementAvailable()) {
+			newAmount = 0;
+		} else {
+			newAmount = AccountDAO.getSpecificAccountById(id).getReimbursementAvailable() - sum;
+		}
 		String sql = "update ers.accounts set r_available = ? where id = ? returning *;";
 		try (Connection conn = cu.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -113,6 +125,10 @@ public class AccountDAO {
 	}
 	
 	public void requestAdditionalInfo() {
+		//implement here
+	}
+	
+	public void provideAdditionalInfo() {
 		//implement here
 	}
 }
