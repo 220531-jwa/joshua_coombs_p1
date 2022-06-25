@@ -42,6 +42,29 @@ public class AccountDAO {
 		return null;
 	}
 	
+	public Account getAccountByUsername(String username) {
+		String sql = "select * from ers.accounts where u_name = ?;";
+		try (Connection conn = cu.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				return new Account(
+						rs.getInt("id"),
+						rs.getString("first_name"),
+						rs.getString("last_name"),
+						rs.getString("u_name"),
+						rs.getString("p_word"),
+						rs.getInt("r_available"),
+						rs.getString("acc_level")
+						);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public static Account getSpecificAccountById(int id) {
 		String sql = "select * from ers.accounts where id = ?;";
 		try (Connection conn = cu.getConnection()) {
