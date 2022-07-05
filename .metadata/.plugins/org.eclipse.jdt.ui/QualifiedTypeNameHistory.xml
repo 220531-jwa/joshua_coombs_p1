@@ -10,4 +10,10 @@
     <fullyQualifiedTypeName name="org.apache.logging.log4j.core.Logger"/>
     <fullyQualifiedTypeName name="io.javalin.http.Context"/>
     <fullyQualifiedTypeName name="org.junit.platform.suite.api.Suite"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.support.ui.WebDriverWait"/>
+    <fullyQualifiedTypeName name="java.time.Duration"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.support.ui.ExpectedConditions"/>
+    <fullyQualifiedTypeName name="dev.joshua_coombs.pages.EmployeePortalPage"/>
+    <fullyQualifiedTypeName name="dev.joshua_coombs.repositories.AccountDAO"/>
+    <fullyQualifiedTypeName name="dev.joshua_coombs.repositories.ReimbursementFormDAO"/>
 </qualifiedTypeNameHistroy>
