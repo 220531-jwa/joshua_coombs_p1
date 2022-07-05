@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Employee Portal</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="employeePortal.html" onclick="viewAllRequestsEmployee()">Pending/Approved Requests</a>
+        <a class="navbar-brand" href="reimbursementForm.html">New Request</a>
+        <a class="navbar-brand" href="loginPage.html" onclick="logoutEmployee()">Logout</a>
+    </nav>
+
+    <div>
+        <table id="allRequests" class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Employee ID</th>
+                    <th scope="col">Request ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">DateTime</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col">Grade Format</th>
+                    <th scope="col">Event Type</th>
+                    <th scope="col">Justification</th>
+                    <th scope="col">Reimbursement Amount</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div>
+        <label for="chooseId">Choose a Request Id: </label>
+        <select name="chooseId" id="selectId" class="form-select"></select>
+        <label for="grade">Change Grade: </label>
+            <input name="grade" id="changeGrade" type="text">
+            <button type="button" class="btn btn-primary" onclick="changeGrade()">Submit</button>
+        </br>
+        <label for="rCancel">Cancel Request: </label>
+            <select name="rCancel" id="cancelRequest" class="form-select"></select>
+                <option value="1">Cancel</option>
+            </select>
+            <button type="button" class="btn btn-primary"  onclick="cancelRequest()">Cancel Request</button>
+    </div>
+    <script src="./ersScript.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -5,4 +5,9 @@
     <fullyQualifiedTypeName name="dev.joshua_coombs.pages.ERSPage"/>
     <fullyQualifiedTypeName name="org.openqa.selenium.firefox.FirefoxDriver"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="dev.joshua_coombs.services.AccountService"/>
+    <fullyQualifiedTypeName name="org.apache.logging.log4j.LogManager"/>
+    <fullyQualifiedTypeName name="org.apache.logging.log4j.core.Logger"/>
+    <fullyQualifiedTypeName name="io.javalin.http.Context"/>
+    <fullyQualifiedTypeName name="org.junit.platform.suite.api.Suite"/>
 </qualifiedTypeNameHistroy>

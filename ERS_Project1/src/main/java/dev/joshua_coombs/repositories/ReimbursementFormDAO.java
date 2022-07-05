@@ -15,7 +15,7 @@ public class ReimbursementFormDAO {
 	
 	public ReimbursementForm createRF(ReimbursementForm rf) {
 		String sql = "insert into ers.r_form values "
-				+ "(default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning *;";
+				+ "(default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning *;";
 		try (Connection conn = cu.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, rf.getReimbursementId());
@@ -27,22 +27,24 @@ public class ReimbursementFormDAO {
 			ps.setInt(7, rf.getCost());
 			ps.setString(8, rf.getGradingFormat());
 			ps.setString(9, rf.getEventType());
-			ps.setString(10, rf.getJustification());
-			ps.setInt(11, rf.getReimbursementAmount());
-			ps.setString(12, rf.getReimbursementStatus());
+			ps.setString(10, rf.getGrade());
+			ps.setString(11, rf.getJustification());
+			ps.setInt(12, rf.getReimbursementAmount());
+			ps.setString(13, rf.getReimbursementStatus());
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				return new ReimbursementForm(
-						rs.getInt("e_id"),
 						rs.getInt("r_id"),
-						rs.getString("first_name"),
-						rs.getString("last_name"),
+						rs.getInt("e_id"),
+						rs.getString("f_name"),
+						rs.getString("l_name"),
 						rs.getTimestamp("date_time"),
 						rs.getString("loc"),
 						rs.getString("description"),
 						rs.getInt("r_cost"),
 						rs.getString("g_format"),
 						rs.getString("e_type"),
+						rs.getString("grade"),
 						rs.getString("just"),
 						rs.getInt("r_amount"), 
 						rs.getString("r_status")
@@ -62,16 +64,17 @@ public class ReimbursementFormDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				rForms.add(new ReimbursementForm(
-						rs.getInt("e_id"),
 						rs.getInt("r_id"),
-						rs.getString("first_name"),
-						rs.getString("last_name"),
+						rs.getInt("e_id"),
+						rs.getString("f_name"),
+						rs.getString("l_name"),
 						rs.getTimestamp("date_time"),
 						rs.getString("loc"),
 						rs.getString("description"),
 						rs.getInt("r_cost"),
 						rs.getString("g_format"),
 						rs.getString("e_type"),
+						rs.getString("grade"),
 						rs.getString("just"),
 						rs.getInt("r_amount"), 
 						rs.getString("r_status")
@@ -91,16 +94,17 @@ public class ReimbursementFormDAO {
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				return new ReimbursementForm(
-						rs.getInt("e_id"),
 						rs.getInt("r_id"),
-						rs.getString("first_name"),
-						rs.getString("last_name"),
+						rs.getInt("e_id"),
+						rs.getString("f_name"),
+						rs.getString("l_name"),
 						rs.getTimestamp("date_time"),
 						rs.getString("loc"),
 						rs.getString("description"),
 						rs.getInt("r_cost"),
 						rs.getString("g_format"),
 						rs.getString("e_type"),
+						rs.getString("grade"),
 						rs.getString("just"),
 						rs.getInt("r_amount"), 
 						rs.getString("r_status")
@@ -121,20 +125,22 @@ public class ReimbursementFormDAO {
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				rForms.add(new ReimbursementForm(
-						rs.getInt("e_id"),
 						rs.getInt("r_id"),
-						rs.getString("first_name"),
-						rs.getString("last_name"),
+						rs.getInt("e_id"),
+						rs.getString("f_name"),
+						rs.getString("l_name"),
 						rs.getTimestamp("date_time"),
 						rs.getString("loc"),
 						rs.getString("description"),
 						rs.getInt("r_cost"),
 						rs.getString("g_format"),
 						rs.getString("e_type"),
+						rs.getString("grade"),
 						rs.getString("just"),
 						rs.getInt("r_amount"), 
 						rs.getString("r_status")
 						));
+				return rForms;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -151,16 +157,17 @@ public class ReimbursementFormDAO {
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				return new ReimbursementForm(
-						rs.getInt("e_id"),
 						rs.getInt("r_id"),
-						rs.getString("first_name"),
-						rs.getString("last_name"),
+						rs.getInt("e_id"),
+						rs.getString("f_name"),
+						rs.getString("l_name"),
 						rs.getTimestamp("date_time"),
 						rs.getString("loc"),
 						rs.getString("description"),
 						rs.getInt("r_cost"),
 						rs.getString("g_format"),
 						rs.getString("e_type"),
+						rs.getString("grade"),
 						rs.getString("just"),
 						rs.getInt("r_amount"), 
 						rs.getString("r_status")
@@ -182,16 +189,17 @@ public class ReimbursementFormDAO {
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				return new ReimbursementForm(
-						rs.getInt("e_id"),
 						rs.getInt("r_id"),
-						rs.getString("first_name"),
-						rs.getString("last_name"),
+						rs.getInt("e_id"),
+						rs.getString("f_name"),
+						rs.getString("l_name"),
 						rs.getTimestamp("date_time"),
 						rs.getString("loc"),
 						rs.getString("description"),
 						rs.getInt("r_cost"),
 						rs.getString("g_format"),
 						rs.getString("e_type"),
+						rs.getString("grade"),
 						rs.getString("just"),
 						rs.getInt("r_amount"), 
 						rs.getString("r_status")
@@ -213,16 +221,48 @@ public class ReimbursementFormDAO {
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				return new ReimbursementForm(
-						rs.getInt("e_id"),
 						rs.getInt("r_id"),
-						rs.getString("first_name"),
-						rs.getString("last_name"),
+						rs.getInt("e_id"),
+						rs.getString("f_name"),
+						rs.getString("l_name"),
 						rs.getTimestamp("date_time"),
 						rs.getString("loc"),
 						rs.getString("description"),
 						rs.getInt("r_cost"),
 						rs.getString("g_format"),
 						rs.getString("e_type"),
+						rs.getString("grade"),
+						rs.getString("just"),
+						rs.getInt("r_amount"), 
+						rs.getString("r_status")
+						);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public ReimbursementForm updateGrade(String newGrade, int rId) {
+		String sql = "update ers.r_form set grade = ? where r_id = ? "
+				+ "returning *";
+		try (Connection conn = cu.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, newGrade);
+			ps.setInt(2, rId);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				return new ReimbursementForm(
+						rs.getInt("r_id"),
+						rs.getInt("e_id"),
+						rs.getString("f_name"),
+						rs.getString("l_name"),
+						rs.getTimestamp("date_time"),
+						rs.getString("loc"),
+						rs.getString("description"),
+						rs.getInt("r_cost"),
+						rs.getString("g_format"),
+						rs.getString("e_type"),
+						rs.getString("grade"),
 						rs.getString("just"),
 						rs.getInt("r_amount"), 
 						rs.getString("r_status")

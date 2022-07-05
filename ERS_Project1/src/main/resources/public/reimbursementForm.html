@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Reimbursement Form</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="employeePortal.html">Pending/Approved Requests</a>
+        <a class="navbar-brand" href="reimbursementForm.html">New Request</a>
+        <a class="navbar-brand" href="loginPage.html" onclick="logout()">Logout</a>
+    </nav>
+    <div>
+        <table id="makeRequest" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Employee ID</th>
+                    <th scope="col">Request ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">DateTime</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col">Justification</th>
+                    <th scope="col">Reimbursement Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">
+                        <select class="form-select" id="eventType">
+                            <option value="1">Course</option>
+                            <option value="2">Seminar</option>
+                            <option value="3">Prep</option>
+                            <option value="4">Certification</option>
+                            <option value="5">Training</option>
+                            <option value="6">Other</option>
+                        </select>
+                    </th>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <select class="form-select" id="gradeFormat">
+                            <option value="1">Letter Grade</option>
+                            <option value="2">Pass/Fail</option>
+                            <option value="3">Presentation</option>
+                        </select>
+                    </th>
+                    <td>
+                        <input id="cost" type="number" min="0">
+                    </td>
+                    <td>
+                        <input id="datetime" type="datetime-local">
+                    </td>
+                    <td>
+                        <input id="location" type="text">
+                    </td>
+                    <td>
+                        <textarea rows="5" cols="25" id="description"></textarea>
+                    </td>
+                    <td>
+                        <textarea rows="5" cols="25" id="justification"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" onclick="submitRF()">Submit Request</button>
+    </div>
+    <script src="./ersScript.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -123,6 +123,7 @@ public class AccountDAO {
 		return null;
 	}
 	
+	/*
 	public Account changePassword(int id, String password) {
 		String sql = "update ers.accounts set p_word = ? where id = ? returning *";
 		try (Connection conn = cu.getConnection()) {
@@ -146,12 +147,5 @@ public class AccountDAO {
 		}
 		return null;
 	}
-	
-	public void requestAdditionalInfo() {
-		//implement here
-	}
-	
-	public void provideAdditionalInfo() {
-		//implement here
-	}
+	*/
 }
