@@ -26,7 +26,7 @@ public class ersRealHumanBeing {
 		});
 		app.routes(() -> {
 			path("/login", () -> {
-				put(AccountController::login);
+				post(AccountController::login);
 				path("/employee", () -> {
 					path("/requests", () -> {
 						path("/cancel", () -> {

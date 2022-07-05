@@ -257,7 +257,7 @@ async function changeGrade() {
         `${baseUrl}/login/employee/requests`,
         {
             method: 'PATCH',
-            header: {'Cointent-Type': 'application/json'},
+            header: {'Content-Type': 'application/json'},
             body: gradeString
         }.then(() => {
             window.location.reload();
@@ -283,7 +283,7 @@ async function changeStatus() {
         `${baseUrl}/login/manager/requests`,
         {
             method: 'PATCH',
-            header: {'Cointent-Type': 'application/json'},
+            header: {'Content-Type': 'application/json'},
             body: sString
         }.then(() => {
             window.location.reload();
